@@ -1,0 +1,16 @@
+1,利用sed命令将test4-6.txt文件中的\OU字符串修改为(ou),在此基础上，将该sed命令改写为两种
+  sed脚本，利用sed的第2.3种调用方式实现同样的目的。
+  1):sed -n 's/\\OU/(ou)/gp' test4-6.txt
+  2):#!/bin/sed -f
+  	 s/\\OU/(ou)/gp
+  	 chmod a+x xx.sh
+  	 ./xx.sh test4-6.txt
+  3):s/\\OU/(ou)/gp
+  	 sed -f xx.sh test4-6.txt
+2,利用sed命令打印test4-6.txt文件中除第3~8行之外的所有行，在以下三种不同选项组合下运行该
+  命令:(1)不带任何选项；(2)只带-n选项；(3)同时带-n和-p选项，并分析以上三种不同选项组合的区别。
+  sed -n '3,8!p' test4-6.txt
+
+3，用两个不同的命令实现如下功能:将test4-6.txt文件中\OU字符串修改为(ou)，并在与\OU的匹配行后
+  加上"we found \OU";
+  sed -e '/\\OU/a\we found \\OU' -e 's/\\OU/(ou)/g' test4-6.txt
